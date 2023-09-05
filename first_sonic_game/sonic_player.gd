@@ -16,6 +16,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		_animated_sprite.play("jump")
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -35,12 +36,11 @@ func _physics_process(delta):
 		_animated_sprite.scale.x = direction
 		if !is_jumping:
 			_animated_sprite.play("run")
-		elif is_jumping:
-			_animated_sprite.play("jump")
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		_animated_sprite.play("idle")
+		if is_on_floor():
+			_animated_sprite.play("idle")
 	if Input.is_action_pressed("up") and is_on_floor():
 			look_up = true
 			_animated_sprite.play("look_up")
