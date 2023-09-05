@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://ban86gw0du1yj"]
+
+[ext_resource type="PackedScene" uid="uid://cyo4i3e8nv7l7" path="res://prefabs/sonic_player.tscn" id="1_mawc8"]
+[ext_resource type="Texture2D" uid="uid://dd0g10ovgtce1" path="res://assets/Tiles/CollissionTiles.png" id="2_jc1ml"]
+[ext_resource type="PackedScene" uid="uid://ccmjitiku6k1b" path="res://prefabs/rings.tscn" id="3_arxk6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsull"]
+texture = ExtResource("2_jc1ml")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_oycta"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wsull")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="sonic_player" parent="." instance=ExtResource("1_mawc8")]
+position = Vector2(276, 283)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_oycta")
+format = 2
+layer_0/tile_data = PackedInt32Array(1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1179672, 0, 0, 1114136, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1048606, 0, 0, 1048607, 0, 0, 1048608, 0, 0, 1048609, 0, 0, 1048610, 0, 0, 1048611, 0, 0, 1048612, 0, 0, 1048613, 0, 0, 1048614, 0, 0, 1048615, 0, 0, 1048616, 0, 0, 1048617, 0, 0, 1048618, 0, 0)
+
+[node name="rings" parent="." instance=ExtResource("3_arxk6")]
+position = Vector2(306, 291)

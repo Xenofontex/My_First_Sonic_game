@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccmjitiku6k1b"]
+
+[ext_resource type="AudioStream" uid="uid://cnhy7danqx81b" path="res://assets/SFX/ring.mp3" id="1_8w7yy"]
+[ext_resource type="Script" path="res://scripts/rings.gd" id="1_icgyu"]
+[ext_resource type="Texture2D" uid="uid://bl8w65u8ackax" path="res://assets/Sprite_Sheets/ring_mania.png" id="1_icqfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b8v8"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 0, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsakm"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 66, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ai1"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 132, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoako"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 198, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3xyw"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 264, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyv3l"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 330, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu234"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 396, 66, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oofjk"]
+atlas = ExtResource("1_icqfp")
+region = Rect2(0, 462, 66, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_digpq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b8v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsakm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ai1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoako")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3xyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyv3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fu234")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oofjk")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 11.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uarvr"]
+radius = 34.176
+
+[node name="rings" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_icgyu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_digpq")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.223468
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uarvr")
+
+[node name="ring_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_8w7yy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

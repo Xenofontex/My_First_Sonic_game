@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buuf3f6nht1x5"]
+
+[ext_resource type="Script" path="res://scripts/RigidBody2D.gd" id="1_xfnid"]
+
+[node name="motobug" type="RigidBody2D"]
+script = ExtResource("1_xfnid")
