@@ -58,7 +58,7 @@ func _physics_process(delta):
 func _set_state():
 	var state = "ready"
 	#if waiting_:
-		#await get_tree().create_timer(3).timeout
+		#await get_n.create_timer(3).timeout
 		#state = "idle"
 	
 		

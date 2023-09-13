@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ban86gw0du1yj"]
+[gd_scene load_steps=7 format=3 uid="uid://ban86gw0du1yj"]
 
 [ext_resource type="PackedScene" uid="uid://cyo4i3e8nv7l7" path="res://prefabs/sonic_player.tscn" id="1_mawc8"]
 [ext_resource type="Texture2D" uid="uid://dd0g10ovgtce1" path="res://assets/Tiles/CollissionTiles.png" id="2_jc1ml"]
 [ext_resource type="PackedScene" uid="uid://ccmjitiku6k1b" path="res://prefabs/rings.tscn" id="3_arxk6"]
+[ext_resource type="PackedScene" uid="uid://e32gwjcqhtp5" path="res://prefabs/pause_menu.tscn" id="4_hdkt5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsull"]
 texture = ExtResource("2_jc1ml")
@@ -37,6 +38,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wsull")
 
 [node name="Node2D" type="Node2D"]
+
+[node name="pause_menu" parent="." instance=ExtResource("4_hdkt5")]
 
 [node name="sonic_player" parent="." instance=ExtResource("1_mawc8")]
 position = Vector2(276, 283)
