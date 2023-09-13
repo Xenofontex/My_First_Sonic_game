@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var _animated_sprite = $anim
 @onready var jump_sound = $AudioStreamPlayer2D
 
+
+
 var waiting_ = false
 var direction
 var look_up = false
@@ -55,9 +57,10 @@ func _physics_process(delta):
 
 func _set_state():
 	var state = "ready"
-	if waiting_:
-		await get_tree().create_timer(3).timeout
-		state = "idle"
+	#if waiting_:
+		#await get_tree().create_timer(3).timeout
+		#state = "idle"
+	
 		
 	if is_jumping:
 		state = "jump"

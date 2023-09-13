@@ -76,8 +76,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uarvr"]
 radius = 34.176
 
-[node name="rings" type="Area2D"]
+[node name="ring" type="Area2D"]
 scale = Vector2(0.25, 0.25)
+collision_layer = 2
+audio_bus_override = true
 script = ExtResource("1_icgyu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

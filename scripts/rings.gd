@@ -14,4 +14,5 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	$ring_sound.play() # Replace with function body.
+	$ring_sound.play(): 
+
