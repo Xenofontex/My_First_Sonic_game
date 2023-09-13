@@ -60,13 +60,13 @@ region = Rect2(96, 100, 48, 50)
 atlas = ExtResource("2_r1e5e")
 region = Rect2(144, 100, 48, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qsvxf"]
-atlas = ExtResource("2_r1e5e")
-region = Rect2(480, 0, 48, 50)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ytwy"]
 atlas = ExtResource("2_r1e5e")
 region = Rect2(528, 0, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtob0"]
+atlas = ExtResource("2_r1e5e")
+region = Rect2(0, 0, 48, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sx4he"]
 atlas = ExtResource("2_r1e5e")
@@ -140,13 +140,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qsvxf")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0ytwy")
 }],
 "loop": false,
 "name": &"look_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtob0")
+}],
+"loop": true,
+"name": &"ready",
 "speed": 5.0
 }, {
 "frames": [{
@@ -172,11 +177,13 @@ radius = 12.0
 height = 36.0
 
 [node name="sonic_player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 2
 script = ExtResource("1_boqjh")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lyhhu")
-animation = &"look_up"
+animation = &"ready"
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)

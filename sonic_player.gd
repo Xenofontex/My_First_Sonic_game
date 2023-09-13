@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var _animated_sprite = $anim
 @onready var jump_sound = $AudioStreamPlayer2D
 
+var waiting_ = false
+var direction
 var look_up = false
 var is_jumping = false
 const SPEED = 300.0
@@ -16,7 +18,6 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		_animated_sprite.play("jump")
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -29,20 +30,44 @@ func _physics_process(delta):
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
+	direction = Input.get_axis("left", "right")
+	
 		
 	if direction:
 		velocity.x = direction * SPEED
 		_animated_sprite.scale.x = direction
-		if !is_jumping:
-			_animated_sprite.play("run")
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if is_on_floor():
-			_animated_sprite.play("idle")
-	if Input.is_action_pressed("up") and is_on_floor():
+		waiting_ = true
+		
+		if Input.is_action_just_pressed("up") and is_on_floor():
+			print("OLHANDO")
 			look_up = true
-			_animated_sprite.play("look_up")
-
+		if Input.is_action_just_released("up"):
+			look_up = false
+			
+			
+			
+	_set_state()
 	move_and_slide()
+	
+
+func _set_state():
+	var state = "ready"
+	if waiting_:
+		await get_tree().create_timer(3).timeout
+		state = "idle"
+		
+	if is_jumping:
+		state = "jump"
+	elif direction != 0:
+		state = "run"
+	
+	if look_up:
+		state = "look_up"
+		
+	if _animated_sprite.name != state:
+		_animated_sprite.play(state)
+	
+	
